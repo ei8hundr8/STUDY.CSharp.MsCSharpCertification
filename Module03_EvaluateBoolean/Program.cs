@@ -4,9 +4,11 @@
 	{
 		static void Main(string[] args)
 		{
-			int saleAmount = 1001;
-			//int discount = saleAmount > 1000 ? 100 : 50;
-			Console.WriteLine($"Discount: {(saleAmount > 1000 ? 100 : 50)}");
+			Random random = new Random();
+			int coinToss = random.Next(1, 3);
+
+			//string coinResult = coinToss == 1 ? "Head" : "Tail";
+			Console.WriteLine($"You got {(coinToss == 1 ? "Head" : "Tail")}!");
 		}
 	}
 }
