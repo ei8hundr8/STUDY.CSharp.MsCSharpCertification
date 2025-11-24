@@ -5,6 +5,8 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleOneAndTwo", "ModuleOneAndTwo\ModuleOneAndTwo.csproj", "{4F3D1A66-C058-4D06-8696-4730B2E392EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Module03_EvaluateBoolean", "Module03_EvaluateBoolean\Module03_EvaluateBoolean.csproj", "{B6CE6345-F738-4616-886C-A7F1EE85688E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,18 @@ Global
 		{4F3D1A66-C058-4D06-8696-4730B2E392EF}.Release|x64.Build.0 = Release|Any CPU
 		{4F3D1A66-C058-4D06-8696-4730B2E392EF}.Release|x86.ActiveCfg = Release|Any CPU
 		{4F3D1A66-C058-4D06-8696-4730B2E392EF}.Release|x86.Build.0 = Release|Any CPU
+		{B6CE6345-F738-4616-886C-A7F1EE85688E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6CE6345-F738-4616-886C-A7F1EE85688E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6CE6345-F738-4616-886C-A7F1EE85688E}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{B6CE6345-F738-4616-886C-A7F1EE85688E}.Debug|x64.Build.0 = Debug|Any CPU
+		{B6CE6345-F738-4616-886C-A7F1EE85688E}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B6CE6345-F738-4616-886C-A7F1EE85688E}.Debug|x86.Build.0 = Debug|Any CPU
+		{B6CE6345-F738-4616-886C-A7F1EE85688E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6CE6345-F738-4616-886C-A7F1EE85688E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6CE6345-F738-4616-886C-A7F1EE85688E}.Release|x64.ActiveCfg = Release|Any CPU
+		{B6CE6345-F738-4616-886C-A7F1EE85688E}.Release|x64.Build.0 = Release|Any CPU
+		{B6CE6345-F738-4616-886C-A7F1EE85688E}.Release|x86.ActiveCfg = Release|Any CPU
+		{B6CE6345-F738-4616-886C-A7F1EE85688E}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
