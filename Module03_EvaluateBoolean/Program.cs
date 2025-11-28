@@ -4,26 +4,11 @@
 	{
 		static void Main(string[] args)
 		{
-			int[] numbers = [4, 8, 15, 16, 23, 42];
-			int total = 0;
-			bool found = false;
-
-			foreach (int number in numbers)
+			for (int i = 0; i <= 50; i += 5)
 			{
-				total += number;
-
-				if (number == 42)
-				{
-					found = true;
-				}
+				Console.WriteLine(i);
+				if (i == 10) break;
 			}
-
-			if (found)
-			{
-				Console.WriteLine("Set contains 42.");
-			}
-
-			Console.WriteLine($"Total: {total}");
 		}
 	}
 }
