@@ -4,16 +4,11 @@
 	{
 		static void Main(string[] args)
 		{
-			Random random = new Random();
-			int current = 0;
-
-			do
+			for (int i = 0; i <= 50; i += 5)
 			{
-				current = random.Next(1, 10);
-				Console.WriteLine(current);
+				Console.WriteLine(i);
+				if (i == 10) break;
 			}
-			while (current != 7);
-
 		}
 	}
 }
