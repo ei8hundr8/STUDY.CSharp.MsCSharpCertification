@@ -4,26 +4,16 @@
 	{
 		static void Main(string[] args)
 		{
-			int[] numbers = [4, 8, 15, 16, 23, 42];
-			int total = 0;
-			bool found = false;
+			Random random = new Random();
+			int current = 0;
 
-			foreach (int number in numbers)
+			do
 			{
-				total += number;
-
-				if (number == 42)
-				{
-					found = true;
-				}
+				current = random.Next(1, 10);
+				Console.WriteLine(current);
 			}
+			while (current != 7);
 
-			if (found)
-			{
-				Console.WriteLine("Set contains 42.");
-			}
-
-			Console.WriteLine($"Total: {total}");
 		}
 	}
 }
