@@ -4,55 +4,26 @@
 	{
 		static void Main(string[] args)
 		{
-			// SKU = Stock Keeping Unit
-			// SKU value format: <product #>-<2-letter color code>-<size code>
+			int employeeLevel = 100;
+			string employeeName = "John Smith";
 
-			/* Original challenge code starts here.
-			string sku = "02-BL-L";
+			string title = "";
 
-			string[] product = sku.Split('-');
-
-			string type = "";
-			string color = "";
-			string size = "";
-
-			if (product[0] == "01")
+			switch (employeeLevel)
 			{
-				type = "Sweat shirt";
-			}
-			else if (product[0] == "02")
-			{
-				type = "T-Shirt";
-			}
-			else if (product[0] == "03")
-			{
-				type = "Sweat pants";
-			}
-			else
-			{
-				type = "Other";
-			}
-
-			if (product[1] == "BL")
-			{
-				color = "Black";
-			}
-			else if (product[1] == "MN")
-			{
-				color = "Maroon";
-			}
-			else
-			{
-				color = "White";
-			}
-
-			if (product[2] == "S")
-			{
-				size = "Small";
-			}
-			else if (product[2] == "M")
-			{
-				size = "Medium";
+				case 100:
+				case 200:
+					title = "Senior Associate";
+					break;
+				case 300:
+					title = "Manager";
+					break;
+				case 400:
+					title = "Senior Manager";
+					break;
+				default:
+					title = "Associate";
+					break;
 			}
 			else if (product[2] == "L")
 			{
@@ -121,6 +92,7 @@
 
 			Console.WriteLine($"Product: {size} {color} {type}");
 
+			Console.WriteLine($"{employeeName}, {title}");
 		}
 	}
 }
