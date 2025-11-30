@@ -75,7 +75,7 @@
 			 * The role name that you entered, "Admin" is not valid. Enter your role name (Administrator, Manager, or User)
 			 * Administrator
 			 * Your input value (Administrator) has been accepted.
-			 */
+			 
 
 			string? input = null;
 			bool validEntry = false;
@@ -112,7 +112,53 @@
 
 			}
 			while (validEntry == false);
+			*/
 
+			/* Code project 3 - Write code that processes the contents of a string array
+			 * Here are the conditions that your third coding project must implement:
+			 * your solution must use the following string array to represent the input to your coding logic:
+			 * string[] myStrings = new string[2] { "I like pizza. I like roast chicken. I like salad", "I like all three of the menu choices" };
+			 * Your solution must declare an integer variable named periodLocation that can be used to hold the location of the period character within a string.
+			 * Your solution must include an outer foreach or for loop that can be used to process each string element in the array. The string variable that you'll process inside the loops should be named myString.
+			 * In the outer loop, your solution must use the IndexOf() method of the String class to get the location of the first period character in the myString variable. The method call should be similar to: myString.IndexOf("."). If there's no period character in the string, a value of -1 will be returned.
+			 * Your solution must include an inner do-while or while loop that can be used to process the myString variable.
+			 * In the inner loop, your solution must extract and display (write to the console) each sentence that is contained in each of the strings that are processed.
+			 * In the inner loop, your solution must not display the period character.
+			 * In the inner loop, your solution must use the Remove(), Substring(), and TrimStart() methods to process the string information.
+			 * 
+			 * Example Output:
+			 * I like pizza
+			 * I like roast chicken
+			 * I like salad
+			 * I like all three of the menu choices
+			 */
+
+			string[] myStrings = { "I like pizza. I like roast chicken. I like salad", "I like all three of the menu choices", "I like Vivian. I like Rapi. I like Alice. I like Mi-chan. Mi-chan like ice cream from Nyan Nyan Ice Cream Cafe" };
+			int periodLocation = 0;
+
+			foreach (string myString in myStrings)
+			{
+				string line;
+				string clean = myString; // This is kinda like working on a git branch. I'm creating a clean branch to not dirty myString.
+
+				periodLocation = clean.IndexOf(".");
+				while (periodLocation != -1)
+				{
+
+					// This is the output line.
+					line = clean.Remove(periodLocation);
+
+					// This is cleanup and update the period to the next one.
+					clean = clean.Substring(periodLocation + 1).TrimStart();
+					periodLocation = clean.IndexOf(".");
+
+					// Flow: Output the line first, then cleanup, and finally update the period location index.
+					Console.WriteLine(line);
+				}
+				// Just in case there are white spaces wrapping the words.
+				Console.WriteLine(clean.Trim());
+
+			}
 		}
 	}
 }
