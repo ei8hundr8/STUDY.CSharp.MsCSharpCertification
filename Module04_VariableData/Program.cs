@@ -4,21 +4,34 @@
 	{
 		static void Main(string[] args)
 		{
-			string value = "mi-chan";
-			int result = 0;
-			if (int.TryParse(value, out result))
-			{
-				Console.WriteLine($"Measurement: {result}");
-			}
-			else
-			{
-				Console.WriteLine("Unable to report measurement.");
-			}
+			/*1. Create a looping structure that can be used to iterate through each string value in the array values.
+			* 2. Complete the required code, placing it within the array looping structure code block. It's necessary to implement the following business rules in your code logic:
+			* Rule 1: If the value is alphabetical, concatenate it to form a message.
+			* Rule 2: If the value is numeric, add it to the total.
+			* Rule 3: The result should match the following output:
 
-			if (result > 0)
+			* Output
+			* Message: ABCDEF
+			* Total: 68.3
+			*/
+
+			string[] values = { "12.3", "45", "ABC", "11", "DEF" };
+			float total = 0;
+			string message = "";
+			foreach (string value in values)
 			{
-				Console.WriteLine($"Measurement (w/ offset): {result + 25}");
+				float num = 0;
+				if (float.TryParse(value, out num))
+				{
+					total += num;
+				}
+				else
+				{
+					message += value;
+				}
 			}
+			Console.WriteLine($"Message: {message}");
+			Console.WriteLine($"Total: {total}");
 
 		}
 	}
