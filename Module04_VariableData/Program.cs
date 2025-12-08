@@ -4,32 +4,18 @@
 	{
 		static void Main(string[] args)
 		{
-			string first = "Hello";
-			string second = "World";
-			string result = string.Format("{0} {1}!", first, second);
-			Console.WriteLine(result);
-			Console.WriteLine("");
+			int invoiceNumber = 1201;
+			decimal productShare = 25.4568m;
+			decimal subtotal = 2750.00m;
+			decimal taxPercentage = .15825m;
+			decimal total = 3185.19m;
 
-			// Formatting currency
-			decimal price = 235.25m;
-			int discount = 50;
-			Console.WriteLine($"Price: {price:C} (Save {discount:C})");
+			Console.WriteLine($"Invoice Number: {invoiceNumber}");
+			Console.WriteLine($"Shares: {productShare:N3} Product");
+			Console.WriteLine($"	Sub Total: {subtotal:C}");
+			Console.WriteLine($"	Tax: {taxPercentage:P2}");
+			Console.WriteLine($"	Total Billed: {total:C}");
 
-			// Formatting numbers
-			decimal measurement = 12354822354.213535214336m;
-			decimal measurement2 = 325228.24165332215236M;
-			Console.WriteLine($"Measurement: {measurement:N}"); // by default, N shows 2 decimal points.
-			Console.WriteLine(($"Measurement 2: {measurement2:N6}"));
-
-			// Formatting percentage
-			decimal tax = .25443M;
-			Console.WriteLine($"Tax Rate: {tax:P}"); // by default, 1 decimal place for :P
-
-			// Combining format
-			decimal priceReg = 69.99M;
-			decimal priceSale = 29.99M;
-			decimal discountPercent = priceSale / priceReg;
-			Console.WriteLine(string.Format("You save {0:C} from {1:C} when you buy it now! (Discount: {2:P})!", (priceReg - priceSale), priceReg, discountPercent));
 		}
 	}
 }
