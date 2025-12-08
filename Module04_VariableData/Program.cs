@@ -4,38 +4,32 @@
 	{
 		static void Main(string[] args)
 		{
-			/*
-			 * Data comes in many formats. In this challenge you have to parse the individual "Order IDs", and output the "OrderIDs" sorted and tagged as "Error" if they aren't exactly four characters in length.
-			 * The orderStream variable contains a string of multiple Order IDs separated by commas.
-			 * Add code below the previous code to parse the "Order IDs" from the string of incoming orders and store the "Order IDs" in an array.
-			 * Add code to output each "Order ID" in sorted order and tag orders that aren't exactly four characters in length as "- Error".
-			 * 
-			 * Your code must produce the following output: 
-			 * A345
-			 * B123
-			 * B177
-			 * B179
-			 * C15     - Error
-			 * C234
-			 * C235
-			 * G3003   - Error
-			 */
+			string first = "Hello";
+			string second = "World";
+			string result = string.Format("{0} {1}!", first, second);
+			Console.WriteLine(result);
+			Console.WriteLine("");
 
-			string orderStream = "B123,C234,A345,C15,B177,G3003,C235,B179";
+			// Formatting currency
+			decimal price = 235.25m;
+			int discount = 50;
+			Console.WriteLine($"Price: {price:C} (Save {discount:C})");
 
-			string[] orderIDs = orderStream.Split(',');
-			Array.Sort(orderIDs);
-			foreach (var ID in orderIDs)
-			{
-				if (ID.Length != 4)
-				{
-					Console.WriteLine(ID + "\t- Error");
-				}
-				else
-				{
-					Console.WriteLine(ID);
-				}
-			}
+			// Formatting numbers
+			decimal measurement = 12354822354.213535214336m;
+			decimal measurement2 = 325228.24165332215236M;
+			Console.WriteLine($"Measurement: {measurement:N}"); // by default, N shows 2 decimal points.
+			Console.WriteLine(($"Measurement 2: {measurement2:N6}"));
+
+			// Formatting percentage
+			decimal tax = .25443M;
+			Console.WriteLine($"Tax Rate: {tax:P}"); // by default, 1 decimal place for :P
+
+			// Combining format
+			decimal priceReg = 69.99M;
+			decimal priceSale = 29.99M;
+			decimal discountPercent = priceSale / priceReg;
+			Console.WriteLine(string.Format("You save {0:C} from {1:C} when you buy it now! (Discount: {2:P})!", (priceReg - priceSale), priceReg, discountPercent));
 		}
 	}
 }
