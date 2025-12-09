@@ -4,58 +4,43 @@
 	{
 		static void Main(string[] args)
 		{
-			/*
-			 * For the sales and marketing company's newest investment products, you send thousands of personalized letters to the company's existing clients. 
-			 * Your job is to write C# code to merge personalized information about the customer. 
-			 * The letter contains information like their existing portfolio and compares their current returns to projected returns if they were to invest in using the new products.
-			 * 
-			 * The writers have decided on the following example marketing message. Here's the desired output (using fictitious customer account data).
-			 * You may not delete any of the existing code except for the comments.
-			 * ---
-			 * Dear Ms. Barros,
-			 * As a customer of our Magic Yield offering we are excited to tell you about a new financial product that would dramatically increase your return.
-			 * 
-			 * Currently, you own 2,975,000.00 shares at a return of 12.75%.
-			 * 
-			 * Our new product, Glorious Future offers a return of 13.13%.  Given your current volume, your potential profit would be $63,000,000.00.
-			 * 
-			 * Here's a quick comparison:
-			 * 
-			 * Magic Yield         12.75%   $55,000,000.00      
-			 * Glorious Future     13.13%   $63,000,000.00  
-			 */
+			/*string message = "Find what is (inside the parentheses)";
+
+			int openingPosition = message.IndexOf('(');
+			int closingPosition = message.IndexOf(')');
+
+			// Console.WriteLine(openingPosition);
+			// Console.WriteLine(closingPosition);
+			openingPosition += 1;
+			int length = closingPosition - openingPosition;
+			Console.WriteLine(message.Substring(openingPosition, length));*/
+
+			/*string message = "What is the value <span>between the tags</span>?";
+
+			int openingPosition = message.IndexOf("<span>");
+			int closingPosition = message.IndexOf("</span>");
+
+			Console.WriteLine(openingPosition);
+			Console.WriteLine(closingPosition);
+
+			openingPosition += 6; // 6 is from the length of the opening <span>, but this is magic number. We don't do that here.
+
+			int length = closingPosition - openingPosition;
+			Console.WriteLine(message.Substring(openingPosition, length));*/
 
 
-			string customerName = "Mr. Barros";
+			string message = "What is the value <span>between the tags</span>?";
 
-			string currentProduct = "Magic Yield";
-			int currentShares = 2975000;
-			decimal currentReturn = 0.1275m;
-			decimal currentProfit = 55000000.0m;
+			const string openSpan = "<span>";
+			const string closeSpan = "</span>";
 
-			string newProduct = "Glorious Future";
-			decimal newReturn = 0.13125m;
-			decimal newProfit = 63000000.0m;
+			int openingPosition = message.IndexOf(openSpan);
+			int closingPosition = message.IndexOf(closeSpan);
 
-			// My logic here
-			Console.WriteLine($"Dear {customerName},");
-			Console.WriteLine($"As a customer of our {currentProduct} offering we are excited to tell you about a new financial product that would dramatically increase your return.\n");
-			Console.WriteLine($"Currently, you own {currentShares:N} shares at a return of {currentReturn:P2}.\n");
-			Console.WriteLine($"Our new product, {newProduct} offers a return of {newReturn:P2}. Given your current volume, your potential profit would be {newProfit:C}.\n");
+			openingPosition += openSpan.Length;
 
-			Console.WriteLine("Here's a quick comparison:\n");
-
-			string comparisonMessage = "";
-
-			// My logic here
-			comparisonMessage = currentProduct.PadRight(20);
-			comparisonMessage += $"{currentReturn:P2}".PadRight(10);
-			comparisonMessage += $"{currentProfit:C}\n";
-			comparisonMessage += newProduct.PadRight(20);
-			comparisonMessage += $"{newReturn:P2}".PadRight(10);
-			comparisonMessage += $"{newProfit:C}\n";
-
-			Console.WriteLine(comparisonMessage);
+			int length = closingPosition - openingPosition;
+			Console.WriteLine(message.Substring(openingPosition, length));
 		}
 	}
 }
