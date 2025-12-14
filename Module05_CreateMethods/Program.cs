@@ -1,24 +1,74 @@
-﻿void ThreeRoyalDice()
+﻿int[] times = { 800, 1200, 1600, 2000 };
+int diff = 0;
+
+void DisplayTime()
 {
-	Random random = new Random();
-	for (int i = 0; i < 3; i++)
+	foreach (int val in times)
 	{
-		Console.Write($"[{random.Next(1, 21)}] ");
+		string time = val.ToString();
+		int len = time.Length;
+
+		if (len >= 3)
+		{
+			time = time.Insert(len - 2, ":");
+		}
+		else if (len == 2)
+		{
+			time = time.Insert(0, "0:");
+		}
+		else
+		{
+			time = time.Insert(0, "0:0");
+		}
+
+		Console.Write($"{time} ");
 	}
 	Console.WriteLine();
 }
-
-Console.WriteLine("Rolling the dices...");
-
-string[] waitSymbols = [". ", ".. ", "... ", ".... "];
-for (int i = 0; i < 3; i++)
+void AdjustTimes()
 {
-	foreach (string symbol in waitSymbols)
+	/* Adjust the times by adding the difference, keeping the value within 24 hours */
+	for (int i = 0; i < times.Length; i++)
 	{
-		Console.Write($"\r{symbol}");
-		Thread.Sleep(250);
+		times[i] = ((times[i] + diff)) % 2400;
 	}
-	Console.Write($"\r{new String(' ', Console.BufferWidth)}");
 }
-ThreeRoyalDice();
-Console.WriteLine("\nThe Royal Dices have spoken...");
+
+Console.WriteLine("Enter current GMT");
+int currentGMT = Convert.ToInt32(Console.ReadLine());
+
+Console.WriteLine("Current Medicine Schedule:");
+
+/* Format and display medicine times */
+
+DisplayTime();
+Console.WriteLine();
+
+Console.WriteLine("Enter new GMT");
+int newGMT = Convert.ToInt32(Console.ReadLine());
+
+if (Math.Abs(newGMT) > 12 || Math.Abs(currentGMT) > 12)
+{
+	Console.WriteLine("Invalid GMT");
+}
+else if (newGMT <= 0 && currentGMT <= 0 || newGMT >= 0 && currentGMT >= 0)
+{
+	diff = 100 * (Math.Abs(newGMT) - Math.Abs(currentGMT));
+
+	/* Adjust the times by adding the difference, keeping the value within 24 hours */
+	AdjustTimes();
+}
+else
+{
+	diff = 100 * (Math.Abs(newGMT) + Math.Abs(currentGMT));
+
+	/* Adjust the times by adding the difference, keeping the value within 24 hours */
+	AdjustTimes();
+}
+
+Console.WriteLine("New Medicine Schedule:");
+
+/* Format and display medicine times */
+DisplayTime();
+
+Console.WriteLine();
