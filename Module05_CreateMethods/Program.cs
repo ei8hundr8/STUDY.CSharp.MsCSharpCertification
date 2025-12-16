@@ -1,25 +1,39 @@
-﻿int[] schedule = { 800, 1200, 1600, 2000 };
-void DisplayAdjustedTime(int[] times, int currentGMT, int newGMT)
-{
-	int diff = 0;
-	if (Math.Abs(newGMT) > 12 || Math.Abs(currentGMT) > 12)
-	{
-		Console.WriteLine("Invalid time zone.");
-	}
-	else if (newGMT <= 0 && currentGMT <= 0 || newGMT >= 0 && currentGMT >= 0)
-	{
-		diff = 100 * (Math.Abs(newGMT) - Math.Abs(currentGMT));
-	}
-	else
-	{
-		diff = 100 * (Math.Abs(newGMT) + Math.Abs(currentGMT));
-	}
+﻿string[] students = { "Loen", "Teressa", "Priestess", "Cinderella" };
 
-	for (int i = 0; i < times.Length; i++)
+DisplayStudents(students);
+DisplayStudents(new string[] { "Vitya", "Morpheah" });
+
+void DisplayStudents(string[] students)
+{
+	foreach (string student in students)
 	{
-		int newTime = (times[i] - diff) % 2400;
-		Console.WriteLine($"{times[i]} -> {newTime}");
+		Console.Write($"{student}, ");
 	}
+	Console.WriteLine();
+}
+Console.WriteLine();
+// Next section
+
+double pi = 3.14159;
+PrintCircleInfo(12);
+PrintCircleInfo(13);
+PrintCircleInfo(21);
+
+void PrintCircleArea(int radius)
+{
+	double area = pi * (radius * radius);
+	Console.WriteLine($"Area: {area}");
 }
 
-DisplayAdjustedTime(schedule, 8, 9);
+void PrintCircleCircumference(int radius)
+{
+	double circumference = 2 * pi * radius;
+	Console.WriteLine($"Circumference: {circumference}");
+}
+
+void PrintCircleInfo(int radius)
+{
+	Console.WriteLine($"Circle with Radius: {radius}");
+	PrintCircleArea(radius);
+	PrintCircleCircumference(radius);
+}
