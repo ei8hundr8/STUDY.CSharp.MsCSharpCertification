@@ -1,39 +1,54 @@
-﻿string[] students = { "Loen", "Teressa", "Priestess", "Cinderella" };
+﻿// Use Value and Reference Type Parameters
 
-DisplayStudents(students);
-DisplayStudents(new string[] { "Vitya", "Morpheah" });
+// Test pass by value
+int a = 3;
+int b = 4;
+int c = 0;
 
-void DisplayStudents(string[] students)
+Multiply(a, b, c);
+Console.WriteLine($"Global Statement: {a} x {b} = {c}");
+
+void Multiply(int a, int b, int c)
 {
-	foreach (string student in students)
+	c = a * b;
+	Console.WriteLine($"Inside Multiply method: {a} x {b} = {c}");
+}
+
+// Test pass by reference
+Console.WriteLine();
+int[] array = { 1, 2, 3, 4, 5 };
+
+PrintArray(array);
+Clear(array);
+PrintArray(array);
+
+void PrintArray(int[] array)
+{
+	foreach (int num in array)
 	{
-		Console.Write($"{student}, ");
+		Console.Write($"{num} ");
 	}
 	Console.WriteLine();
 }
+
+void Clear(int[] array)
+{
+	for (int i = 0; i < array.Length; i++)
+	{
+		array[i] = 0;
+	}
+}
+
+// Test with strings
 Console.WriteLine();
-// Next section
+string status = "Healthy";
 
-double pi = 3.14159;
-PrintCircleInfo(12);
-PrintCircleInfo(13);
-PrintCircleInfo(21);
+Console.WriteLine($"Start: {status}");
+SetStatus(false);
+Console.WriteLine($"End: {status}");
 
-void PrintCircleArea(int radius)
+void SetStatus(bool isHealthy)
 {
-	double area = pi * (radius * radius);
-	Console.WriteLine($"Area: {area}");
-}
-
-void PrintCircleCircumference(int radius)
-{
-	double circumference = 2 * pi * radius;
-	Console.WriteLine($"Circumference: {circumference}");
-}
-
-void PrintCircleInfo(int radius)
-{
-	Console.WriteLine($"Circle with Radius: {radius}");
-	PrintCircleArea(radius);
-	PrintCircleCircumference(radius);
+	status = (isHealthy ? "Healthy" : "Unhealthy");
+	Console.WriteLine($"Middle: {status}");
 }
