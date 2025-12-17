@@ -1,54 +1,43 @@
-﻿// Use Value and Reference Type Parameters
+﻿string[] guestList = { "Loen", "Neon", "Rapi", "Cindy", "Leviathan" };
+string[] rsvps = new string[10];
+int count = 0;
 
-// Test pass by value
-int a = 3;
-int b = 4;
-int c = 0;
-
-Multiply(a, b, c);
-Console.WriteLine($"Global Statement: {a} x {b} = {c}");
-
-void Multiply(int a, int b, int c)
+void RSVP(string name, int partySize, string allergies, bool inviteOnly)
 {
-	c = a * b;
-	Console.WriteLine($"Inside Multiply method: {a} x {b} = {c}");
-}
-
-// Test pass by reference
-Console.WriteLine();
-int[] array = { 1, 2, 3, 4, 5 };
-
-PrintArray(array);
-Clear(array);
-PrintArray(array);
-
-void PrintArray(int[] array)
-{
-	foreach (int num in array)
+	if (inviteOnly)
 	{
-		Console.Write($"{num} ");
+		// search guestList before adding rsvps
+		bool found = false;
+		foreach (string guest in guestList)
+		{
+			if (guest.Equals(name))
+			{
+				found = true;
+				break;
+			}
+		}
+		if (!found)
+		{
+			Console.WriteLine($"Sorry, {name} is not on the guest list.");
+			return;
+		}
 	}
-	Console.WriteLine();
+	rsvps[count] = $"Name: {name}, \tParty Size: {partySize}, \tAllergies: {allergies}";
+	count++;
 }
-
-void Clear(int[] array)
+void ShowRSVPs()
 {
-	for (int i = 0; i < array.Length; i++)
+	Console.WriteLine("\nTotal RSVPs:");
+	for (int i = 0; i < count; i++)
 	{
-		array[i] = 0;
+		Console.WriteLine(rsvps[i]);
 	}
 }
 
-// Test with strings
-Console.WriteLine();
-string status = "Healthy";
-
-Console.WriteLine($"Start: {status}");
-SetStatus(false);
-Console.WriteLine($"End: {status}");
-
-void SetStatus(bool isHealthy)
-{
-	status = (isHealthy ? "Healthy" : "Unhealthy");
-	Console.WriteLine($"Middle: {status}");
-}
+RSVP("Jonte", 1, "none", true);
+RSVP("Neon", 2, "Nuts", true);
+RSVP("Cindy", 2, "none", false);
+RSVP("Loen", 1, "Jackfruit", true);
+RSVP("Rapi", 4, "none", false);
+RSVP("Leviathan", 2, "Stone fruit", false);
+ShowRSVPs();
