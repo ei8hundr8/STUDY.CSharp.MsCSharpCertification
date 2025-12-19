@@ -1,30 +1,22 @@
-﻿double total = 0;
-double minSpend = 30.00;
+﻿// Create a method that returns an integer
 
-double[] items = { 15.97, 3.50, 12.25, 22.99, 10.98 };
-double[] discounts = { 0.30, 0.00, 0.10, 0.20, 0.50 };
+double usd = 23.73;
+int vnd = UsdToVnd(usd);
 
-for (int i = 0; i < items.Length; i++)
+Console.WriteLine($"${usd} USD = ${vnd} VND");
+Console.WriteLine($"${vnd} VND = ${usd} USD");
+
+int UsdToVnd(double usd)
 {
-	total += GetDiscountedPrice(i);
+	int rate = 23500;
+	return (int)(usd * rate);
 }
 
-total -= TotalMeetsMin() ? 5.00 : 0.00;
+// Create a method that returns a double
+Console.WriteLine();
 
-Console.WriteLine($"Total: ${FormatDecimal(total)}");
-
-double GetDiscountedPrice(int itemIndex)
+double VndToUsd(int vnd)
 {
-	// Calculate the discounted price for the item
-	return items[itemIndex] * (1 - discounts[itemIndex]);
-}
-bool TotalMeetsMin()
-{
-	// Check if the total meets the min requirement
-	return total >= minSpend;
-}
-string FormatDecimal(double input)
-{
-	// Format the double so only 2 decimal places are displayed
-	return input.ToString().Substring(0, 5);
+	double rate = 23500;
+	return (double)(vnd / rate);
 }
