@@ -1,83 +1,30 @@
-﻿/*Your challenge is to create a method that displays the correct email address for both internal and external employees.
- *You're given lists of internal and external employee names. An employee's email address consists of their username and company domain name.
- *The username format is the first two characters of the employee first name, followed by their last name. 
- *For example, an employee named "Robert Bavin" would have the username "robavin". The domain for internal employees is "contoso.com".
- *In this challenge, you're given some starting code. You must decide how to create and call a method to display email addresses.
- *
- *Expected Output:
- *robavin@contoso.com
- *sibright@contoso.com
- *kisinclair@contoso.com
- *aakamath@contoso.com
- *sadelucchi@contoso.com
- *siali@contoso.com
- *viashton@hayworth.com
- *codysart@hayworth.com
- *shlawrence@hayworth.com
- *davaldes@hayworth.com
- */
+﻿double total = 0;
+double minSpend = 30.00;
 
-string[,] corporate =
+double[] items = { 15.97, 3.50, 12.25, 22.99, 10.98 };
+double[] discounts = { 0.30, 0.00, 0.10, 0.20, 0.50 };
+
+for (int i = 0; i < items.Length; i++)
 {
-		{"Robert", "Bavin"}, {"Simon", "Bright"},
-		{"Kim", "Sinclair"}, {"Aashrita", "Kamath"},
-		{"Sarah", "Delucchi"}, {"Sinan", "Ali"},{"Vivian","Banshee"}
-};
-
-string[,] external =
-{
-		{"Vinnie", "Ashton"}, {"Cody", "Dysart"},
-		{"Shay", "Lawrence"}, {"Daren", "Valdes"}
-};
-
-string externalDomain = "hayworth.com";
-
-void EmployeeInternal()
-{
-	for (int i = 0; i < corporate.GetLength(0); i++)
-	{
-		// display internal email addresses
-		string firstName = corporate[i, 0].ToLower().Substring(0, 2);
-		string lastName = corporate[i, 1].ToLower();
-		string emailInter = firstName + lastName + "@contoso.com";
-
-		Console.WriteLine(emailInter);
-	}
+	total += GetDiscountedPrice(i);
 }
 
-void EmployeeExternal()
+total -= TotalMeetsMin() ? 5.00 : 0.00;
+
+Console.WriteLine($"Total: ${FormatDecimal(total)}");
+
+double GetDiscountedPrice(int itemIndex)
 {
-	for (int i = 0; i < external.GetLength(0); i++)
-	{
-		// display external email addresses
-		string firstName = external[i, 0].ToLower().Substring(0, 2);
-		string lastName = external[i, 1].ToLower();
-		string emailExter = firstName + lastName + "@" + externalDomain;
-		Console.WriteLine(emailExter);
-	}
+	// Calculate the discounted price for the item
+	return items[itemIndex] * (1 - discounts[itemIndex]);
 }
-
-Console.WriteLine("---Internal Employee---");
-EmployeeInternal();
-Console.WriteLine("\n---External Employee---");
-EmployeeExternal();
-
-// Microsoft answer below
-Console.WriteLine("\n---Example Answer---");
-
-for (int i = 0; i < corporate.GetLength(0); i++)
+bool TotalMeetsMin()
 {
-	DisplayEmail(first: corporate[i, 0], last: corporate[i, 1]);
+	// Check if the total meets the min requirement
+	return total >= minSpend;
 }
-
-for (int i = 0; i < external.GetLength(0); i++)
+string FormatDecimal(double input)
 {
-	DisplayEmail(first: external[i, 0], last: external[i, 1], externalDomain);
-}
-
-void DisplayEmail(string first, string last, string domain = "contoso.com")
-{
-	string email = first.Substring(0, 2) + last;
-	email = email.ToLower();
-	Console.WriteLine($"{email}@{domain}");
+	// Format the double so only 2 decimal places are displayed
+	return input.ToString().Substring(0, 5);
 }
