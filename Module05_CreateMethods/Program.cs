@@ -1,50 +1,27 @@
-﻿// Create a method that returns a string
+﻿// Create a method that returns boolean
 
-string ReverseWord(string word)
+string[] words = { "racecar", "talented", "deified", "tent", "tenet" };
+
+Console.WriteLine("---Palindrome Checker---");
+
+foreach (string word in words)
 {
-	string result = "";
-
-	for (int i = word.Length - 1; i >= 0; i--)
-	{
-		result += word[i];
-	}
-	return result;
+	Console.WriteLine($"{word}: {IsPalindrome(word)}");
 }
 
-string? input;
-Console.Write("What word do you want to reverse?\t");
-input = Console.ReadLine();
-
-if (input != null)
+bool IsPalindrome(string word)
 {
-	Console.WriteLine($"\nThis is your reversed word!\n{ReverseWord(input)}");
-}
+	int start = 0;
+	int end = word.Length - 1;
 
-// Create a method to reverse words in a sentence
-Console.WriteLine();
-
-String ReverseSentence(string sentence)
-{
-	string result = "";
-	string[] words = sentence.Split(' ');
-
-	foreach (string word in words)
+	while (start < end)
 	{
-		for (int i = word.Length - 1; i >= 0; i--)
+		if (word[start] != word[end])
 		{
-			result += word[i];
+			return false;
 		}
-		result += " ";
+		start++;
+		end--;
 	}
-
-	return result.Trim();
-}
-
-string? input1;
-Console.WriteLine("What sentence do you want to reverse, traveler?");
-input1 = Console.ReadLine();
-
-if (input1 != null)
-{
-	Console.WriteLine($"\nThis is your reversed sentence!\n{ReverseSentence(input1)}");
+	return true;
 }
