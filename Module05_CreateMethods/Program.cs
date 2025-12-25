@@ -1,27 +1,47 @@
-﻿// Create a method that returns boolean
-
-string[] words = { "racecar", "talented", "deified", "tent", "tenet" };
-
-Console.WriteLine("---Palindrome Checker---");
-
-foreach (string word in words)
+﻿int target = 80;
+int[] coins = new int[] { 5, 5, 50, 25, 25, 10, 5 };
+int[,] result = TwoCoins(coins, target);
+int[,] TwoCoins(int[] coins, int target)
 {
-	Console.WriteLine($"{word}: {IsPalindrome(word)}");
+	int[,] result = { { -1, -1 }, { -1, -1 }, { -1, -1 }, { -1, -1 }, { -1, -1 } };
+	int count = 0;
+
+	for (int curr = 0; curr < coins.Length; curr++)
+	{
+		for (int next = curr + 1; next < coins.Length; next++)
+		{
+			if (coins[curr] + coins[next] == target)
+			{
+				result[count, 0] = curr;
+				result[count, 1] = next;
+				count++;
+			}
+			if (count == result.GetLength(0))
+			{
+				return result;
+			}
+		}
+	}
+	if (count == 0)
+	{
+		return new int[0, 0];
+	}
+	return result;
 }
 
-bool IsPalindrome(string word)
+if (result.Length == 0)
 {
-	int start = 0;
-	int end = word.Length - 1;
-
-	while (start < end)
+	Console.WriteLine("There are no matching pairs.");
+}
+else
+{
+	Console.WriteLine($"Coin pair found at position:");
+	for (int i = 0; i < result.GetLength(0); i++)
 	{
-		if (word[start] != word[end])
+		if (result[i, 0] == -1)
 		{
-			return false;
+			break;
 		}
-		start++;
-		end--;
+		Console.WriteLine($"{result[i, 0]}, {result[i, 1]}");
 	}
-	return true;
 }
